@@ -1,1 +1,25 @@
-<h1>{{title}}</h1>
+<div style="text-align:left;">
+  <nav class="navbar navbar-light" style="background-color: #007aaa;">
+      <a class="navbar-brand" href="#" style="height: 1.5%;"><img src="./assets/stocks.png" alt=""></a>
+  </nav>
+
+  <table class="table" *ngIf="arr">
+      <!-- ADD HEADERS -->
+      <thead>
+      <tr>
+          <th>Company Name</th>
+          <th>Initial Price</th>
+          <th>Predicted Price</th>
+          <th>Buy Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pred of arr">
+          <td>{{pred.company}}</td>
+          <td>${{pred.initial_price}}</td>
+          <td>${{pred.price_2007}}</td>
+          <td><button type="button" class="btn btn-info">Buy</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
