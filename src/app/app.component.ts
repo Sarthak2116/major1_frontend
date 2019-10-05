@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

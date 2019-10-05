@@ -1,25 +1,62 @@
-<div style="text-align:left;">
-  <nav class="navbar navbar-light" style="background-color: #007aaa;">
-      <a class="navbar-brand" href="#" style="height: 1.5%;"><img src="./assets/stocks.png" alt=""></a>
-  </nav>
-
-  <table class="table" *ngIf="arr">
-      <!-- ADD HEADERS -->
-      <thead>
-      <tr>
-          <th>Company Name</th>
-          <th>Initial Price</th>
-          <th>Predicted Price</th>
-          <th>Buy Stock</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pred of arr">
-          <td>{{pred.company}}</td>
-          <td>${{pred.initial_price}}</td>
-          <td>${{pred.price_2007}}</td>
-          <td><button type="button" class="btn btn-info">Buy</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<mat-toolbar color="primary">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+          </button>
+          &nbsp;&nbsp;GoInvest
+        </mat-toolbar-row>
+      </mat-toolbar>
+<span class="example-spacer"></span>
+<!-- <form>
+    Username:
+  <mat-form-field>
+      <input matInput size="1" style="font-size: 15px;" required>
+  </mat-form-field>&nbsp;&nbsp;
+  Password: 
+  <mat-form-field>
+      <input matInput type="password" size="1" required>
+  </mat-form-field>&nbsp;&nbsp;
+  <button mat-raised-button color="primary">
+    Login
+  </button>
+</form> -->
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav-content>
+      <div style="text-align:centre; ">
+          <table class="table" *ngIf="arr" style="text-align:center;">
+              <!-- ADD HEADERS -->
+              <thead>
+              <tr>
+                  <th>Company Name</th>
+                  <th>Initial Price</th>
+                  <th>Predicted Price</th>
+                  <th>Buy Stock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pred of arr">
+                  <td>{{pred.company}}</td>
+                  <td>${{pred.initial_price}}</td>
+                  <td>${{pred.price_2007}}</td>
+                  <td><button mat-raised-button color="primary">Buy</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  </mat-sidenav-content>
+    <mat-sidenav #sidenav>
+      <mat-nav-list style="width: 250px;">
+        <a mat-list-item [routerLink]="'/accounts'"> Stocks Bought </a>
+        <a mat-list-item [routerLink]="'/accounts'"> Payment History </a>
+        <a mat-list-item [routerLink]="'/accounts'"> Profile </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <!-- <mat-sidenav-content>
+      <div style="height: 88vh;">
+  
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content> -->
+  </mat-sidenav-container>
