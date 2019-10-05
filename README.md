@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AngularTourOfHeroes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# major1_frontend
+Angular Project for GoInvest
+>>>>>>> 22b2b9d639353f0f7a44e80ae832460430b0c502
