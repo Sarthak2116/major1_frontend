@@ -40,7 +40,7 @@
                   <td>{{pred.company}}</td>
                   <td>${{pred.initial_price}}</td>
                   <td>${{pred.price_2007}}</td>
-                  <td><button mat-raised-button color="primary">Buy</button></td>
+                  <td><button mat-raised-button (click)="getData()" color="primary">Buy</button></td>
               </tr>
             </tbody>
           </table>

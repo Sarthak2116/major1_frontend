@@ -14,7 +14,7 @@ export interface DialogData {
 })
 export class AppComponent {
   title = 'GoInvest';
-  constructor(private httpService: HttpClient) { }
+  constructor(private httpService: HttpClient, private http: HttpClient) {}
   arr: string [];
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
@@ -27,5 +27,11 @@ export class AppComponent {
         console.log (err.message);
       }
     );
+  }
+  getData() {
+    console.log('getData');
+    return this.http.get('http:localhost:8080/stocks')
+    .subscribe(data => {console.log('We got yaa!');
+   });
   }
 }
