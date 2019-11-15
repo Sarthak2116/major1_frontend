@@ -24,9 +24,9 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav-content>
-      <div style="text-align:centre; ">
+      <!-- <div style="text-align:centre; ">
           <table class="table" *ngIf="arr" style="text-align:center;">
-              <!-- ADD HEADERS -->
+              ADD HEADERS
               <thead>
               <tr>
                   <th>Company Name</th>
@@ -34,29 +34,29 @@
                   <th>Predicted Price</th>
                   <th>Buy Stock</th>
               </tr>
-            </thead>
-            <tbody>
+            </thead> -->
+            <!-- <tbody>
               <tr *ngFor="let pred of arr">
                   <td>{{pred.company}}</td>
                   <td>${{pred.initial_price}}</td>
                   <td>${{pred.price_2007}}</td>
                   <td><button mat-raised-button (click)="getData()" color="primary">Buy</button></td>
               </tr>
-            </tbody>
-          </table>
-        </div>
+            </tbody> -->
+          <!-- </table>
+        </div> -->
   </mat-sidenav-content>
     <mat-sidenav #sidenav>
       <mat-nav-list style="width: 250px;">
-        <a mat-list-item [routerLink]="'/accounts'"> Stocks Bought </a>
-        <a mat-list-item [routerLink]="'/accounts'"> Payment History </a>
-        <a mat-list-item [routerLink]="'/accounts'"> Profile </a>
+        <a mat-list-item [routerLink]="'predict'"> Prices Predicted </a>
+        <a mat-list-item [routerLink]="'bought'"> Payment History </a>
+        <a mat-list-item [routerLink]="'profile'"> Profile </a>
       </mat-nav-list>
     </mat-sidenav>
-    <!-- <mat-sidenav-content>
+    <mat-sidenav-content>
       <div style="height: 88vh;">
   
         <router-outlet></router-outlet>
       </div>
-    </mat-sidenav-content> -->
+    </mat-sidenav-content>
   </mat-sidenav-container>

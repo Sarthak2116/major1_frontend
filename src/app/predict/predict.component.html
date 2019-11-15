@@ -1,0 +1,22 @@
+<h1>predict works!</h1>
+<div style="text-align:centre; ">
+    <table class="table" *ngIf="arr" style="text-align:center;">
+        <!-- ADD HEADERS -->
+        <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Initial Price</th>
+            <th>Predicted Price</th>
+            <th>Buy Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pred of arr">
+            <td>{{pred.company}}</td>
+            <td>${{pred.initial_price}}</td>
+            <td>${{pred.price_2007}}</td>
+            <td><button mat-raised-button (click)="getData()" color="primary">Buy</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

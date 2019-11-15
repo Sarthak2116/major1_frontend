@@ -1,24 +1,18 @@
-import { Component, Inject } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-predict',
+  templateUrl: './predict.component.html',
+  styleUrls: ['./predict.component.css']
 })
-export class AppComponent {
-  title = 'GoInvest';
-  constructor(private httpService: HttpClient, private http: HttpClient) {}
+export class PredictComponent implements OnInit {
   arr: string [];
-  // tslint:disable-next-line: use-lifecycle-interface
+  constructor(private httpService: HttpClient, private http: HttpClient) { }
+
   ngOnInit() {
-    this.httpService.get('./assets/stocks.json').subscribe(
+    this.httpService.get('../assets/stocks.json').subscribe(
       data => {
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA.
         // console.log(this.arr[1]);
