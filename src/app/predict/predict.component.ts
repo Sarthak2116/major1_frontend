@@ -12,19 +12,26 @@ export class PredictComponent implements OnInit {
   constructor(private httpService: HttpClient, private http: HttpClient) { }
 
   ngOnInit() {
-    this.httpService.get('../assets/stocks.json').subscribe(
+    this.httpService.get('http://18.234.126.177:8080/stocks/prvalue').subscribe(
       data => {
-        this.arr = data as string [];	 // FILL THE ARRAY WITH DATA.
-        // console.log(this.arr[1]);
+        this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
+        console.log(this.arr[0]);
       },
+        // response => console.log(response)
       (err: HttpErrorResponse) => {
         console.log (err.message);
       }
     );
   }
-  getData() {
+  getData(pred) {
     console.log('getData');
-    return this.http.get('http://localhost:8080/stocks')
+    return this.http.post('http://18.234.126.177:8080/stocks',
+    {
+      stkid: pred.stk_id,
+      quant: 1,
+      description: pred.stk_name,
+      initcost: pred.cur_price
+    })
     .subscribe(data => {console.log('We got yaa!!!');
    });
   }

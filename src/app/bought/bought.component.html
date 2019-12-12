@@ -1,1 +1,21 @@
-<p>bought works!</p>
+<div style="text-align:centre; ">
+    <table class="table" *ngIf="arr" style="text-align:center;">
+        <!-- ADD HEADERS -->
+        <thead>
+        <tr>
+            <th>Stock ID</th>
+            <th>Company Name</th>
+            <th>Purchased On</th>
+            <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pred of arr">
+            <td>{{pred.stkid}}</td>
+            <td>{{pred.description}}</td>
+            <th>{{pred.purchased_on}}</th>
+            <td>${{pred.initcost}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

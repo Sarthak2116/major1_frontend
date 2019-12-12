@@ -28,10 +28,10 @@ export class AppComponent {
       }
     );
   }
-  getData() {
-    console.log('getData');
-    return this.http.get('http://localhost:8080/stocks')
-    .subscribe(data => {console.log('We got yaa!!!');
-   });
-  }
+  // getData() {
+  //   console.log('getData');
+  //   return this.http.get('http://localhost:8080/stocks')
+  //   .subscribe(data => {console.log('We got yaa!!!');
+  //  });
+  // }
 }
