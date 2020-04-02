@@ -4,6 +4,7 @@ import { PredictComponent } from './predict/predict.component';
 import { BoughtComponent } from './bought/bought.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component'
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: PredictComponent
+    component: LoginComponent
   },
   {
     path: 'predict',
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

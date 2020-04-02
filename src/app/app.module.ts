@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BoughtComponent,
     ProfileComponent,
     LoginComponent,
-    PredictComponent
+    PredictComponent,
+    RegisterComponent
   ],
   imports: [
     NgbModule,

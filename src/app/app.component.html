@@ -1,12 +1,13 @@
 <mat-toolbar color="primary">
-    <mat-toolbar color="primary" class="app-header">
-        <mat-toolbar-row>
-          <button mat-icon-button>
-            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-          </button>
-          &nbsp;&nbsp;<a mat-list-item [routerLink]="''" style="color: white; text-decoration: none;">GoInvest</a>
-        </mat-toolbar-row>
-      </mat-toolbar>
+  <button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+  </button>
+  &nbsp;&nbsp;<a mat-list-item [routerLink]="''" style="color: white; text-decoration: none;">GoInvest</a>
+  <span class="example-spacer"></span>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active" style="text-decoration: none;">Register</a>
+  </span>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav-content>     
@@ -17,10 +18,9 @@
         <a mat-list-item [routerLink]="'bought'"> Payment History </a>
         <a mat-list-item [routerLink]="'profile'"> Profile </a>
       </mat-nav-list>
-    </mat-sidenav>
+    </mat-sidenav> -->
     <mat-sidenav-content>
-      <div style="height: 88vh;">
-  
+      <div style="height: 100vh;">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
