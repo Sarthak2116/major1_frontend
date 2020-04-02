@@ -7,14 +7,16 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './predict.component.html',
   styleUrls: ['./predict.component.css']
 })
+// tslint:disable-next-line: component-class-suffix
 export class PredictComponent implements OnInit {
   arr: string [];
+  data: {'Stocks': []};
   constructor(private httpService: HttpClient, private http: HttpClient) { }
-
+  // API KEY Q1VXVY4DNLC6ZP6T
   ngOnInit() {
-    this.httpService.get('http://18.234.126.177:8080/stocks/prvalue').subscribe(
+    this.httpService.get('http://localhost:8080/stocks').subscribe(
       data => {
-        this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
+        this.arr = data['Stocks'] as string [];	 // FILL THE ARRAY WITH DATA
         console.log(this.arr[0]);
       },
         // response => console.log(response)
@@ -25,12 +27,12 @@ export class PredictComponent implements OnInit {
   }
   getData(pred) {
     console.log('getData');
-    return this.http.post('http://18.234.126.177:8080/stocks',
+    return this.http.post('http://localhost:8080/stocks',
     {
-      stkid: pred.stk_id,
+      stkid: pred.stkid,
       quant: 1,
-      description: pred.stk_name,
-      initcost: pred.cur_price
+      description: pred.description,
+      initcost: pred.initcost
     })
     .subscribe(data => {console.log('We got yaa!!!');
    });

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -15,12 +15,17 @@ import { BoughtComponent } from './bought/bought.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PredictComponent } from './predict/predict.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { LoginComponent } from './login/login.component';
+import { AngularMaterialModule } from './angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoughtComponent,
     ProfileComponent,
+    LoginComponent,
     PredictComponent
   ],
   imports: [
@@ -34,6 +39,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatListModule,
     BrowserModule,
     AppRoutingModule,
+    AngularMaterialModule,
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
@@ -46,6 +55,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
