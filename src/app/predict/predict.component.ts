@@ -16,6 +16,7 @@ export class PredictComponent implements OnInit {
   ngOnInit() {
     this.httpService.get('http://localhost:8080/stocks').subscribe(
       data => {
+        // tslint:disable-next-line: no-string-literal
         this.arr = data['Stocks'] as string [];	 // FILL THE ARRAY WITH DATA
         console.log(this.arr[0]);
       },
