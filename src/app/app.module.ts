@@ -15,6 +15,9 @@ import { BoughtComponent } from './bought/bought.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PredictComponent } from './predict/predict.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { LoginComponent } from './login/login.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -54,9 +57,23 @@ import { RegisterComponent } from './register/register.component';
       innerStrokeColor: '#C7E596',
       animationDuration: 300,
     }),
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+             return     localStorage.getItem('access_token');},
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: []
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

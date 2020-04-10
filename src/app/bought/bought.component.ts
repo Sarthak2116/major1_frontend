@@ -15,8 +15,8 @@ export class BoughtComponent implements OnInit {
   ngOnInit() {
     this.httpService.get('http://localhost:8080/stocks').subscribe(
       data => {
-        this.arr = data['Stocks'] as string [];	 // FILL THE ARRAY WITH DATA
-        console.log(this.arr[0]);
+        this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
+        // console.log(this.arr[this.arr.length-1]);
       },
         // response => console.log(response)
       (err: HttpErrorResponse) => {

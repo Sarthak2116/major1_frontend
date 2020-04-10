@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AuthService } from './shared/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -14,24 +14,11 @@ export interface DialogData {
 })
 export class AppComponent {
   title = 'GoInvest';
-  constructor(private httpService: HttpClient, private http: HttpClient) {}
+  constructor(private httpService: HttpClient, private http: HttpClient, public authService: AuthService) {}
   arr: string [];
   // tslint:disable-next-line: use-lifecycle-interface
-  ngOnInit() {
-    this.httpService.get('./assets/stocks.json').subscribe(
-      data => {
-        this.arr = data as string [];	 // FILL THE ARRAY WITH DATA.
-        // console.log(this.arr[1]);
-      },
-      (err: HttpErrorResponse) => {
-        console.log (err.message);
-      }
-    );
+  ngOnInit() {}
+  logout() {
+    this.authService.doLogout()
   }
-  // getData() {
-  //   console.log('getData');
-  //   return this.http.get('http://localhost:8080/stocks')
-  //   .subscribe(data => {console.log('We got yaa!!!');
-  //  });
-  // }
 }

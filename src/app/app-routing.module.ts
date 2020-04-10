@@ -5,15 +5,18 @@ import { BoughtComponent } from './bought/bought.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {
     path: 'bought',
-    component: BoughtComponent
+    component: BoughtComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',
@@ -21,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'predict',
-    component: PredictComponent
+    component: PredictComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

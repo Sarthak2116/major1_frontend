@@ -2,11 +2,13 @@
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
   </button>
-  &nbsp;&nbsp;<a mat-list-item [routerLink]="''" style="color: white; text-decoration: none;">GoInvest</a>
+  &nbsp;&nbsp;<a *ngIf="!this.authService.isLoggedIn" mat-list-item [routerLink]="''" style="color: white; text-decoration: none;">GoInvest</a>
+  <a *ngIf="this.authService.isLoggedIn" mat-list-item [routerLink]="'predict'" style="color: white; text-decoration: none;">GoInvest</a>
   <span class="example-spacer"></span>
   <span class="nav-tool-items">
-    <a mat-button routerLink="login" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
-    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active" style="text-decoration: none;">Register</a>
+    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="login" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
+    <a *ngIf="!this.authService.isLoggedIn" mat-button mat-raised-button routerLink="register" routerLinkActive="active" style="text-decoration: none;">Register</a>
+    <a (click)="logout()" *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLinkActive="active" style="text-decoration: none;">Logout</a>
   </span>
 </mat-toolbar>
 <mat-sidenav-container>

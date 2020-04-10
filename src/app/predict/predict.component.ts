@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from './../shared/auth.service';
 
 @Component({
   selector: 'app-predict',
@@ -11,14 +13,22 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class PredictComponent implements OnInit {
   arr: string [];
   data: {'Stocks': []};
-  constructor(private httpService: HttpClient, private http: HttpClient) { }
+  // tslint:disable-next-line: ban-types
+  currentUser: Object = {};
+  constructor(private httpService: HttpClient, private http: HttpClient, public authService: AuthService,
+    private actRoute: ActivatedRoute) {
+      // tslint:disable-next-line: prefer-const
+      let id = this.actRoute.snapshot.paramMap.get('id');
+      this.authService.getUserProfile(id).subscribe(res => {
+      this.currentUser = res.msg;
+    })
+     }
   // API KEY Q1VXVY4DNLC6ZP6T
   ngOnInit() {
-    this.httpService.get('http://localhost:8080/stocks').subscribe(
+    this.httpService.get('http://localhost:8080/stocks/prvalue').subscribe(
       data => {
         // tslint:disable-next-line: no-string-literal
-        this.arr = data['Stocks'] as string [];	 // FILL THE ARRAY WITH DATA
-        console.log(this.arr[0]);
+        this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
       },
         // response => console.log(response)
       (err: HttpErrorResponse) => {
@@ -30,10 +40,9 @@ export class PredictComponent implements OnInit {
     console.log('getData');
     return this.http.post('http://localhost:8080/stocks',
     {
-      stkid: pred.stkid,
       quant: 1,
-      description: pred.description,
-      initcost: pred.initcost
+      description: pred.stk_name,
+      initcost: pred.cur_price
     })
     .subscribe(data => {console.log('We got yaa!!!');
    });
