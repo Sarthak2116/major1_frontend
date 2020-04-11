@@ -57,7 +57,7 @@ export class AuthService {
   }
 
   // User profile
-  getUserProfile(id): Observable<any> {
+  getUserProfile(): Observable<any> {
     const api = `http://localhost:8080/stocks/prvalue`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res: Response) => {

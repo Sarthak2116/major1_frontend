@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
     private actRoute: ActivatedRoute) {
       // tslint:disable-next-line: prefer-const
       let id = this.actRoute.snapshot.paramMap.get('id');
-      this.authService.getUserProfile(id).subscribe(res => {
+      this.authService.getUserProfile().subscribe(res => {
       this.currentUser = res.msg;
     })
      }

@@ -1,4 +1,4 @@
-<body class="abc">
+<body class="abc" *ngIf="!this.authService.isLoggedIn">
     
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">

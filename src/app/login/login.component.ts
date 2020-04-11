@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   signinForm: FormGroup;
-
+  a=0;
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   loginUser() {
-    this.authService.signIn(this.signinForm.value)
+    this.authService.signIn(this.signinForm.value);
+      this.signinForm.reset();
+      this.a=1;
   }
 }

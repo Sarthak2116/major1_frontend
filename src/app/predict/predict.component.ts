@@ -18,12 +18,11 @@ export class PredictComponent implements OnInit {
   constructor(private httpService: HttpClient, private http: HttpClient, public authService: AuthService,
     private actRoute: ActivatedRoute) {
       // tslint:disable-next-line: prefer-const
-      let id = this.actRoute.snapshot.paramMap.get('id');
-      this.authService.getUserProfile(id).subscribe(res => {
+      // let id = this.actRoute.snapshot.paramMap.get();
+      this.authService.getUserProfile().subscribe(res => {
       this.currentUser = res.msg;
     })
      }
-  // API KEY Q1VXVY4DNLC6ZP6T
   ngOnInit() {
     this.httpService.get('http://localhost:8080/stocks/prvalue').subscribe(
       data => {
