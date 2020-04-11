@@ -27,7 +27,11 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     this.authService.signIn(this.signinForm.value);
+    // console.log(this.authService.signIn(this.signinForm.value)['status']);
+      if (this.authService.signIn(this.signinForm.value)) {
       this.signinForm.reset();
       this.a=1;
+      // this.router.navigate(['login']);
+      }
   }
 }

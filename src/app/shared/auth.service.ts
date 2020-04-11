@@ -32,13 +32,16 @@ export class AuthService {
 
   // Sign-in
   signIn(user: User) {
+    // tslint:disable-next-line: prefer-const
     return this.http.post<any>(`${this.endpoint}`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token)
-        // tslint:disable-next-line: no-shadowed-variable
-          this.router.navigate(['/predict']);
+        this.getUserProfile().subscribe((res: any) => {
+        this.router.navigate(['/predict']);
+        })
       })
   }
+
 
   getToken() {
     return localStorage.getItem('access_token');
