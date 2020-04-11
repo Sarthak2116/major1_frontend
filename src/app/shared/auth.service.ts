@@ -4,13 +4,14 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  endpoint = 'http://localhost:8080/login';
+  endpoint = environment.Route+'/login';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
 
@@ -62,7 +63,7 @@ export class AuthService {
 
   // User profile
   getUserProfile(): Observable<any> {
-    const api = `http://localhost:8080/stocks/prvalue`;
+    const api = environment.Route+`/stocks/prvalue`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {}

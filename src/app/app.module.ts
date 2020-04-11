@@ -23,6 +23,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { RegisterComponent } from './register/register.component';
       config: {
         tokenGetter: function  tokenGetter() {
              return     localStorage.getItem('access_token');},
-        whitelistedDomains: ['localhost:8080'],
+        whitelistedDomains: [environment.Route],
         blacklistedRoutes: []
       }
     })

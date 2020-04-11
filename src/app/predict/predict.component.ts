@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../shared/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-predict',
@@ -24,7 +25,7 @@ export class PredictComponent implements OnInit {
     })
      }
   ngOnInit() {
-    this.httpService.get('http://localhost:8080/stocks/prvalue').subscribe(
+    this.httpService.get(environment.Route+'/stocks/prvalue').subscribe(
       data => {
         // tslint:disable-next-line: no-string-literal
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
@@ -37,7 +38,7 @@ export class PredictComponent implements OnInit {
   }
   getData(pred) {
     console.log('getData');
-    return this.http.post('http://localhost:8080/stocks',
+    return this.http.post(environment.Route+'/stocks',
     {
       quant: 1,
       description: pred.stk_name,

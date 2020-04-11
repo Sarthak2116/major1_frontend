@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/angular-tour-of-heroes",
             "index": "src/index.html",
@@ -23,6 +23,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "customWebpackConfig": {
+              "path":"custom-webpack.config.js"
+            },
             "styles": [
               "src/custom-theme.scss",
               "src/styles.css"
