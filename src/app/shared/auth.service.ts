@@ -36,7 +36,8 @@ export class AuthService {
     return this.http.post<any>(`${this.endpoint}`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token)
-        this.getUserProfile().subscribe((res: any) => {
+        this.getUserProfile().subscribe((res1: any) => {
+        console.log(res1);
         this.router.navigate(['/predict']);
         })
       })
