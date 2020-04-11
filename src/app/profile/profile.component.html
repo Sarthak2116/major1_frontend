@@ -3,7 +3,7 @@
         <tr>
             <td>
                 <circle-progress
-                    [percent]= "a"
+                    [percent]= "this.per"
                     [radius]="250"
                     [outerStrokeWidth]="16"
                     [innerStrokeWidth]="8"
@@ -14,9 +14,9 @@
                 </circle-progress>
             </td>
             <td align="center">
-                <h1>Total Funds: {{tf}}</h1>
-                <h1 style="color: darkred;">Invested Funds: {{invf}} </h1>
-                <h1 style="color: mediumseagreen;">Funds Left: {{lf}} </h1>
+                <h1>Total Funds: ${{this.tf}}</h1>
+                <h1 style="color: darkred;">Invested Funds: ${{this.ivf}} </h1>
+                <h1 style="color: mediumseagreen;">Funds Left: ${{this.lf}} </h1>
             </td>
         </tr>
     </table>

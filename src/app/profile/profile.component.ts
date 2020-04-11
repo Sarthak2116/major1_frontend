@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../shared/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -11,10 +12,10 @@ import { AuthService } from './../shared/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  a = 65;
-  tf = '$20,000';
-  invf = '$12,000';
-  lf = '$8,000';
+  lf = 0;
+  tf = 3000;
+  ivf = 0;
+  per=0;
   // tslint:disable-next-line: ban-types
   currentUser: Object = {};
   constructor(private httpService: HttpClient, private http: HttpClient, public authService: AuthService,
@@ -26,10 +27,11 @@ export class ProfileComponent implements OnInit {
     })
      }
   ngOnInit() {
-    this.httpService.get('http://18.234.126.177:8080/stocks/balance').subscribe(
+    this.httpService.get(environment.Route+'/stocks/balance').subscribe(
       data => {
-        // this.a = data;	 // FILL THE ARRAY WITH DATA
-        // console.log(this.a[0]);
+        this.lf = data as number;	 // FILL THE ARRAY WITH DATA
+        this.ivf=this.tf-this.lf;
+        this.per=(this.ivf/this.tf)*100;
       },
         // response => console.log(response)
       (err: HttpErrorResponse) => {
