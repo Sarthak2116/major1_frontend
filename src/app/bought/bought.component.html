@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pred of arr">
+        <tr *ngFor="let pred of arr | reverse">
             <td>{{pred.stkid}}</td>
             <td>{{pred.description}}</td>
             <th>{{pred.purchased_on}}</th>

@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   tf = 3000;
   ivf = 0;
   per=0;
+  color='#00ff00';
   // tslint:disable-next-line: ban-types
   currentUser: Object = {};
   constructor(private httpService: HttpClient, private http: HttpClient, public authService: AuthService,
@@ -32,8 +33,19 @@ export class ProfileComponent implements OnInit {
         this.lf = data as number;	 // FILL THE ARRAY WITH DATA
         this.ivf=this.tf-this.lf;
         this.per=(this.ivf/this.tf)*100;
+        if(this.per<50)
+        {
+          this.color='rgb(60,179,113)';
+        }
+        else if(this.per>=50 && this.per<75)
+        {
+          this.color='#FFA500';
+        }
+        else
+        {
+          this.color='rgb(139,0,0)';
+        }
       },
-        // response => console.log(response)
       (err: HttpErrorResponse) => {
         console.log (err.message);
       }

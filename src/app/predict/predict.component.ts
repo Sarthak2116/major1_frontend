@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../shared/auth.service';
 import { environment } from 'src/environments/environment';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from '../app.component';
+import { BuycomComponent } from '../buycom/buycom.component';
 
 @Component({
   selector: 'app-predict',
@@ -16,10 +19,9 @@ export class PredictComponent implements OnInit {
   data: {'Stocks': []};
   // tslint:disable-next-line: ban-types
   currentUser: Object = {};
-  constructor(private httpService: HttpClient, private http: HttpClient, public authService: AuthService,
+  constructor(public dialog: MatDialog, private httpService: HttpClient, private http: HttpClient, public authService: AuthService,
     private actRoute: ActivatedRoute) {
       // tslint:disable-next-line: prefer-const
-      // let id = this.actRoute.snapshot.paramMap.get();
       this.authService.getUserProfile().subscribe(res => {
       this.currentUser = res.msg;
     })
@@ -30,7 +32,6 @@ export class PredictComponent implements OnInit {
         // tslint:disable-next-line: no-string-literal
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
       },
-        // response => console.log(response)
       (err: HttpErrorResponse) => {
         console.log (err.message);
       }
@@ -46,5 +47,13 @@ export class PredictComponent implements OnInit {
     })
     .subscribe(data => {console.log('We got yaa!!!');
    });
+  }
+  openDialog(pred): void {
+    // tslint:disable-next-line: no-use-before-declare
+    this.getData(pred);
+    // tslint:disable-next-line: no-use-before-declare
+    const dialogRef = this.dialog.open(BuycomComponent, {
+      width: '250px',
+    });
   }
 }

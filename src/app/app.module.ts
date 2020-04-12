@@ -24,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { environment } from 'src/environments/environment';
+import { BuycomComponent } from './buycom/buycom.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,11 @@ import { environment } from 'src/environments/environment';
     ProfileComponent,
     LoginComponent,
     PredictComponent,
-    RegisterComponent
+    RegisterComponent,
+    BuycomComponent
+  ],
+  entryComponents: [
+    BuycomComponent
   ],
   imports: [
     NgbModule,
