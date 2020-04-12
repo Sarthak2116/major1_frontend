@@ -17,7 +17,7 @@ import { BuycomComponent } from '../buycom/buycom.component';
 export class PredictComponent implements OnInit {
   arr: string [];
   data: {'Stocks': []};
-  selected= '1';
+  selected= 1;
   market = 'trending_up';
   // tslint:disable-next-line: ban-types
   currentUser: Object = {};

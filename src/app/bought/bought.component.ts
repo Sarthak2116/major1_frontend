@@ -3,9 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-@Pipe({
-  name: 'reverse'
-})
 @Component({
   selector: 'app-bought',
   templateUrl: './bought.component.html',
@@ -14,15 +11,18 @@ import { environment } from 'src/environments/environment';
 // tslint:disable-next-line: component-class-suffix
 export class BoughtComponent implements OnInit,PipeTransform {
   arr: string [];
+  t = 0;
   constructor(private httpService: HttpClient, private http: HttpClient) { }
 
   ngOnInit() {
     this.httpService.get(environment.Route+'/stocks').subscribe(
       data => {
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
+        this.arr = this.transform(this.arr);
         console.log(this.arr);
       },
       (err: HttpErrorResponse) => {
+        this.t=1;
         console.log (err.message);
       }
     );
@@ -31,5 +31,4 @@ export class BoughtComponent implements OnInit,PipeTransform {
     const copy = arr.slice();
     return copy.reverse();
 }
-
 }
