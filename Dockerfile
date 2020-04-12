@@ -1,7 +1,7 @@
 FROM node:10-alpine as builder
 
 COPY package.json package-lock.json ./
-# ENV Route="http://35.193.186.244:8080"
+ENV Route="http://35.193.186.244:8080"
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
 RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
