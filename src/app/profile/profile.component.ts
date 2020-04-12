@@ -31,7 +31,14 @@ export class ProfileComponent implements OnInit {
     this.httpService.get(environment.Route+'/stocks/balance').subscribe(
       data => {
         this.lf = data as number;	 // FILL THE ARRAY WITH DATA
+        if(this.lf>3000)
+        {
+          this.lf=3000;
+        }
         this.ivf=this.tf-this.lf;
+        if(this.ivf<0){
+          this.ivf=0;
+        }
         this.per=(this.ivf/this.tf)*100;
         if(this.per<50)
         {
