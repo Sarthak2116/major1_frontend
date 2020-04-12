@@ -4,7 +4,7 @@
         <thead>
         <tr>
             <th>Stock ID</th>
-            <th>Company Name</th>
+            <th>Stock Name</th>
             <th>Purchased On</th>
             <th>Price</th>
         </tr>
@@ -14,7 +14,7 @@
             <td>{{pred.stkid}}</td>
             <td>{{pred.description}}</td>
             <th>{{pred.purchased_on}}</th>
-            <td>${{pred.initcost}}</td>
+            <td>${{pred.initcost*pred.quant}}</td>
         </tr>
       </tbody>
     </table>

@@ -20,6 +20,7 @@ export class BoughtComponent implements OnInit,PipeTransform {
     this.httpService.get(environment.Route+'/stocks').subscribe(
       data => {
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
+        console.log(this.arr);
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);

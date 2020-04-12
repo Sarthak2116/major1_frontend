@@ -3,18 +3,35 @@
         <!-- ADD HEADERS -->
         <thead>
         <tr>
-            <th>Company Name</th>
-            <th>Initial Price</th>
-            <th>Predicted Price</th>
+            <th>Stock Name</th>
+            <th>Today's Price</th>
+            <th>Price in 7 days</th>
+            <th>No of stocks</th>
+            <th>Total cost</th>
             <th>Buy Stock</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let pred of arr">
-            <td>{{pred.stk_name}}</td>
-            <td>${{pred.cur_price}}</td>
-            <td>${{pred.pr_price}}</td>
-            <td><button mat-raised-button (click)="openDialog(pred)" color="primary">Buy</button></td>
+            <td><br>{{pred.stk_name}}</td>
+            <td><br>${{pred.cur_price.toFixed(2)}}</td>
+            <td><br>${{pred.pr_price}} 
+              <mat-icon style="vertical-align: middle;" *ngIf="check(pred.cur_price,pred.pr_price)" [ngStyle]="{'color': 'green'}">trending_up</mat-icon>
+              <mat-icon style="vertical-align: middle;" *ngIf="!check(pred.cur_price,pred.pr_price)" [ngStyle]="{'color': 'red'}">trending_down</mat-icon>
+            </td>
+            <td>
+              <mat-form-field style="width: 50px; text-align: center;">
+                <mat-select [(value)]="selected">
+                  <mat-option value="1" selected>1</mat-option>
+                  <mat-option value="5">5</mat-option>
+                  <mat-option value="10">10</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <br>${{(pred.cur_price*selected).toFixed(2)}}
+            </td>
+            <td><p></p><button mat-raised-button (click)="openDialog(pred,selected)" color="primary">Buy</button></td>
         </tr>
       </tbody>
     </table>
