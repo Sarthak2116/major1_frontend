@@ -4,34 +4,43 @@
         <thead>
         <tr>
             <th>Stock Name</th>
-            <th>Today's Price(per stock)</th>
-            <th>Price in 7 days(per stock)</th>
+            <th>Current Price(per stock)</th>
+            <th>Tomorrow's Opening Price(per stock)</th>
             <th>No of stocks</th>
             <th>Total cost</th>
             <th>Buy Stock</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pred of arr">
+        <tr *ngFor="let pred of arr; trackBy: trackById;">
             <td><br>{{pred.stk_name}}</td>
             <td><br>${{pred.cur_price.toFixed(2)}}</td>
-            <td><br>${{pred.pr_price}} 
-              <mat-icon style="vertical-align: middle;" *ngIf="check(pred.cur_price,pred.pr_price)" [ngStyle]="{'color': 'green'}">trending_up</mat-icon>
-              <mat-icon style="vertical-align: middle;" *ngIf="!check(pred.cur_price,pred.pr_price)" [ngStyle]="{'color': 'red'}">trending_down</mat-icon>
+            <td><br>
+              <p *ngIf="check(pred.cur_price,pred.pr_price)" style="color: green; font-size: xx-small;">
+                <span style="color: black; font-size: 14px;">${{(pred.pr_price).toFixed(2)}} </span>
+                <mat-icon style="vertical-align: middle;"  [ngStyle]="{'color': 'green'}">trending_up</mat-icon>
+                (+{{((pred.pr_price-pred.cur_price)*100/pred.cur_price).toFixed(2)}}%)
+              </p>
+              <p *ngIf="!check(pred.cur_price,pred.pr_price)" style="color: red; font-size: xx-small;">
+                <span style="color: black; font-size: 14px;">${{(pred.pr_price).toFixed(2)}} </span>
+                <mat-icon style="vertical-align: middle;"  [ngStyle]="{'color': 'red'}">trending_down</mat-icon>
+                ({{((pred.pr_price-pred.cur_price)*100/pred.cur_price).toFixed(2)}}%)
+              </p>
             </td>
             <td>
               <mat-form-field style="width: 50px; text-align: center;">
-                <mat-select [(value)]="selected">
-                  <mat-option value="1">1</mat-option>
-                  <mat-option value="5">5</mat-option>
-                  <mat-option value="10">10</mat-option>
+                <mat-select [(value)]='pred.selected'>
+                  <mat-option value=1>1</mat-option>
+                  <mat-option value=5>5</mat-option>
+                  <mat-option value=10>10</mat-option>
                 </mat-select>
               </mat-form-field>
             </td>
             <td>
-              <br>${{(pred.cur_price*selected).toFixed(2)}}
+              <br>${{convert(pred.cur_price,pred.selected)}}
             </td>
-            <td><p></p><button mat-raised-button (click)="openDialog(pred,selected)" color="primary">Buy</button></td>
+            <td><p></p>
+              <button mat-raised-button (click)="openDialog(pred,pred.selected)" color="primary" >Buy</button></td>
         </tr>
       </tbody>
     </table>

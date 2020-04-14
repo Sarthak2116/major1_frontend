@@ -2,12 +2,14 @@
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
   </button>
-  &nbsp;&nbsp;<a *ngIf="!this.authService.isLoggedIn" mat-list-item [routerLink]="''" style="color: white; text-decoration: none;">GoInvest</a>
+  &nbsp;&nbsp;
+  <a *ngIf="!this.authService.isLoggedIn" mat-list-item [routerLink]="''" style="color: white; text-decoration: none;">GoInvest</a>
   <a *ngIf="this.authService.isLoggedIn" mat-list-item [routerLink]="'predict'" style="color: white; text-decoration: none;">GoInvest</a>
   <span class="example-spacer"></span>
   <span class="nav-tool-items">
-    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="login" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
+    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="''" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
     <a *ngIf="!this.authService.isLoggedIn" mat-button mat-raised-button routerLink="register" routerLinkActive="active" style="text-decoration: none;">Register</a>
+    <a *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLink="market" routerLinkActive="active" style="text-decoration: none;">View Market</a>&nbsp; &nbsp; &nbsp;
     <a (click)="logout()" *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLinkActive="active" style="text-decoration: none;">Logout</a>
   </span>
 </mat-toolbar>
@@ -16,13 +18,20 @@
   </mat-sidenav-content>
     <mat-sidenav #sidenav>
       <mat-nav-list style="width: 250px;">
-        <a mat-list-item [routerLink]="'predict'"> Prices Predicted </a>
+        <a mat-list-item [routerLink]="'market'"> Current Market </a>
+        <a mat-list-item [routerLink]="'predict'"> GoInvest's Predictions </a>
         <a mat-list-item [routerLink]="'bought'"> Payment History </a>
-        <a mat-list-item [routerLink]="'profile'"> Profile </a>
+        <a mat-list-item [routerLink]="'profile'"> My Profile </a>
       </mat-nav-list>
-    </mat-sidenav> -->
+    </mat-sidenav>
     <mat-sidenav-content>
-      <div style="height: 100vh;">
+      <div [hidden]="!loading" style='height:100vh;'>
+        <span class="centered">
+          <h2 style="color: #3f51b5;">Loading...Please wait</h2>
+        <h2 style="margin-left: 35px;"><mat-spinner></mat-spinner></h2>
+      </span>
+      </div>
+      <div [hidden]="loading" style="height: 100vh;">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>

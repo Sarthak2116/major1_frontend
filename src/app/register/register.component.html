@@ -30,3 +30,16 @@
     </mat-card>
   </div>
 </body>
+<body *ngIf="this.authService.isLoggedIn" style="background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);">
+  <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" [hidden]="!this.authService.isLoggedIn" style='height:100vh;'>
+  <span class="centered">
+    <h2 style="color: #3f51b5;">Looks like you are already logged in.</h2>
+    <h2><mat-progress-bar mode="buffer"></mat-progress-bar></h2>
+    <h2 style="color: #3f51b5;">
+      <button mat-raised-button color="primary" routerLink="/predict" style="margin-left: 28%;">
+        Take me to Market
+      </button>
+    </h2>
+  </span>
+  </div>
+</body>

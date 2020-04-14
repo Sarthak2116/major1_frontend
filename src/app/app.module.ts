@@ -25,6 +25,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { environment } from 'src/environments/environment';
 import { BuycomComponent } from './buycom/buycom.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
+import { MarketComponent } from './market/market.component';
 
 @NgModule({
   declarations: [
@@ -34,15 +38,20 @@ import { BuycomComponent } from './buycom/buycom.component';
     LoginComponent,
     PredictComponent,
     RegisterComponent,
-    BuycomComponent
+    BuycomComponent,
+    MarketComponent
   ],
   entryComponents: [
     BuycomComponent
   ],
   imports: [
     NgbModule,
+    ChartsModule,
+    WavesModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     MatInputModule,
+    MatProgressBarModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,

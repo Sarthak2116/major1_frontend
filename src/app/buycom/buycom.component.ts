@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../app.component';
 
 @Component({
   selector: 'app-buycom',
@@ -10,8 +9,7 @@ import { DialogData } from '../app.component';
 export class BuycomComponent {
 
     constructor(
-    public dialogRef: MatDialogRef<BuycomComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    public dialogRef: MatDialogRef<BuycomComponent>) {}
 
     onNoClick(): void {
     this.dialogRef.close();

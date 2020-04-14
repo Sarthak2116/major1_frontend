@@ -11,10 +11,10 @@ import { environment } from 'src/environments/environment';
 })
 
 export class AuthService {
+  t=true;
   endpoint = environment.Route+'/login';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
-
   constructor(
     private http: HttpClient,
     public router: Router
@@ -24,7 +24,6 @@ export class AuthService {
   // Sign-up
   signUp(user: User): Observable<any> {
     const api = `${this.endpoint}/signup`;
-    console.log(user.U_name);
     return this.http.post(api, user)
       .pipe(
         catchError(this.handleError)
@@ -32,16 +31,24 @@ export class AuthService {
   }
 
   // Sign-in
-  signIn(user: User) {
+  signIn(user: User): boolean {
     // tslint:disable-next-line: prefer-const
-    return this.http.post<any>(`${this.endpoint}`, user)
+    this.http.post<any>(`${this.endpoint}`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token)
-        this.getUserProfile().subscribe((res1: any) => {
-        console.log(res1);
         this.router.navigate(['/predict']);
-        })
-      })
+      },
+      (err: HttpErrorResponse) => {
+        this.t=false;
+        console.log (err.message);
+      }
+      );
+      if(this.t)
+      {
+        return true;
+      }
+      return false;
+
   }
 
 
@@ -57,21 +64,9 @@ export class AuthService {
   doLogout() {
     const removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
     }
   }
-
-  // User profile
-  getUserProfile(): Observable<any> {
-    const api = environment.Route+`/stocks/prvalue`;
-    return this.http.get(api, { headers: this.headers }).pipe(
-      map((res: Response) => {
-        return res || {}
-      }),
-      catchError(this.handleError)
-    )
-  }
-
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';

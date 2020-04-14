@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from './../shared/auth.service';
 import { Router } from '@angular/router';
+import {ProgressBarMode} from '@angular/material/progress-bar';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -23,15 +25,19 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if(this.authService.getToken()!=null)
+    {
+      this.router.navigate(['/predict']);
+    }
+  }
 
   loginUser() {
-    this.authService.signIn(this.signinForm.value);
-    // console.log(this.authService.signIn(this.signinForm.value)['status']);
-      if (this.authService.signIn(this.signinForm.value)) {
-      this.signinForm.reset();
-      this.a=1;
-      // this.router.navigate(['login']);
+    const t = this.authService.signIn(this.signinForm.value);
+      if(!t)
+      {
+        this.signinForm.reset();
+        this.a=1;
       }
   }
 }

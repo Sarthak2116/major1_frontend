@@ -6,6 +6,7 @@
             <th>Stock ID</th>
             <th>Stock Name</th>
             <th>Purchased On</th>
+            <th>Quantity Bought</th>
             <th>Price</th>
         </tr>
       </thead>
@@ -14,7 +15,8 @@
             <td>{{pred.stkid}}</td>
             <td>{{pred.description}}</td>
             <th>{{pred.purchased_on}}</th>
-            <td>${{pred.initcost*pred.quant}}</td>
+            <td>{{pred.quant}}</td>
+            <td>${{(pred.initcost*pred.quant).toFixed(2)}}</td>
         </tr>
       </tbody>
     </table>

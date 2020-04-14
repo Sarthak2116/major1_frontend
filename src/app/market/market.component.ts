@@ -8,12 +8,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { BuycomComponent } from '../buycom/buycom.component';
 
 @Component({
-  selector: 'app-predict',
-  templateUrl: './predict.component.html',
-  styleUrls: ['./predict.component.css']
+  selector: 'app-market',
+  templateUrl: './market.component.html',
+  styleUrls: ['./market.component.css']
 })
-// tslint:disable-next-line: component-class-suffix
-export class PredictComponent implements OnInit {
+export class MarketComponent implements OnInit {
+
   arr: string [];
   market = 'trending_up';
   // tslint:disable-next-line: ban-types
@@ -22,11 +22,12 @@ export class PredictComponent implements OnInit {
     private actRoute: ActivatedRoute) {
      }
   ngOnInit(): void {
-    this.httpService.get(environment.Route+'/stocks/prvalue').subscribe(
+    this.httpService.get(environment.Route+'/stocks/market').subscribe(
       data => {
         let i=0;
         // tslint:disable-next-line: no-string-literal
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
+        console.log(this.arr);
         for(i=0;i<this.arr.length;i++)
         {
           const s='selected';

@@ -1,0 +1,29 @@
+<div style="text-align:centre;">
+    <table class="table" *ngIf="arr" >
+        <!-- ADD HEADERS -->
+        <thead>
+        <tr>
+            <th>Stock Name</th>
+            <th>Opening Price</th>
+            <th>Closing Price</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Bid</th>
+            <th>Ask</th>
+            <th>Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pred of arr; trackBy: trackById;">
+            <td>{{pred.stk_name}}</td>
+            <td>${{pred.open_price.toFixed(2)}}</td>
+            <td>${{pred.close_price.toFixed(2)}}</td>
+            <td style="color: green;">${{pred.high.toFixed(2)}}</td>
+            <td style="color: red;">${{pred.low.toFixed(2)}}</td>
+            <td>{{pred.bid}}</td>
+            <td>{{pred.ask}}</td>
+            <td>{{pred.volume}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

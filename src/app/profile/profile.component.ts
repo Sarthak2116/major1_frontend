@@ -13,9 +13,11 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileComponent implements OnInit {
   lf = 0;
-  tf = 3000;
+  tf = 50000.00;
   ivf = 0;
   per=0;
+  s;
+  hide=true;
   color='#00ff00';
   // tslint:disable-next-line: ban-types
   currentUser: Object = {};
@@ -23,28 +25,34 @@ export class ProfileComponent implements OnInit {
     private actRoute: ActivatedRoute) {
       // tslint:disable-next-line: prefer-const
       let id = this.actRoute.snapshot.paramMap.get('id');
-      this.authService.getUserProfile().subscribe(res => {
-      this.currentUser = res.msg;
-    })
      }
   ngOnInit() {
+    this.httpService.get(environment.Route+'/stocks/profile').subscribe(
+      data1 => {
+        this.s = data1 as string[];	 // FILL THE ARRAY WITH DATA
+      },
+      (err: HttpErrorResponse) => {
+        console.log (err.message);
+      }
+    );
     this.httpService.get(environment.Route+'/stocks/balance').subscribe(
       data => {
         this.lf = data as number;	 // FILL THE ARRAY WITH DATA
-        if(this.lf>3000)
+        this.lf=parseFloat(this.lf.toFixed(2));
+        if(this.lf>50000.00)
         {
-          this.lf=3000;
+          this.lf=50000.00;
         }
         this.ivf=this.tf-this.lf;
-        if(this.ivf<0){
-          this.ivf=0;
+        if(this.ivf<0.00){
+          this.ivf=0.00;
         }
-        this.per=(this.ivf/this.tf)*100;
-        if(this.per<50)
+        this.per=(this.ivf/this.tf)*100.00;
+        if(this.per<50.00)
         {
           this.color='rgb(60,179,113)';
         }
-        else if(this.per>=50 && this.per<75)
+        else if(this.per>=50.00 && this.per<75.00)
         {
           this.color='#FFA500';
         }

@@ -19,7 +19,6 @@ export class BoughtComponent implements OnInit,PipeTransform {
       data => {
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
         this.arr = this.transform(this.arr);
-        console.log(this.arr);
       },
       (err: HttpErrorResponse) => {
         this.t=1;

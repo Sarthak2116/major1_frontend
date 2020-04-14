@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
 import { AuthGuard } from './shared/auth.guard';
+import { MarketComponent } from './market/market.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'predict',
@@ -28,12 +29,15 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'market',
+    component: MarketComponent
+  },
+  { path: '**',
+  component: LoginComponent
   }
 ];
 

@@ -28,6 +28,7 @@
     "angular-bootstrap-md": "^9.0.1",
     "jqwidgets-ng": "^9.0.0",
     "ng-circle-progress": "^1.5.1",
+    "ngvforlib": "0.0.9",
     "rxjs": "~6.5.4",
     "tslib": "^1.11.1",
     "zone.js": "~0.10.3"
