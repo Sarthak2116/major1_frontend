@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class RegisterComponent implements OnInit {
   signupForm: FormGroup;
-
+  a=0;
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
@@ -27,9 +27,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit() { }
 
   registerUser() {
-    this.authService.signUp(this.signupForm.value).subscribe((res) => {
-        this.signupForm.reset()
+      this.authService.signUp(this.signupForm.value).subscribe((res) => {
+        this.a=0;
         this.router.navigate(['']);
-    })
+        });
+    this.signupForm.reset();
+    this.router.navigate(['register']);
+    this.a=1;
   }
 }

@@ -34,7 +34,8 @@ const routes: Routes = [
   },
   {
     path: 'market',
-    component: MarketComponent
+    component: MarketComponent,
+    canActivate: [AuthGuard]
   },
   { path: '**',
   component: LoginComponent

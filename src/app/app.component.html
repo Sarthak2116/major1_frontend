@@ -1,3 +1,4 @@
+<body>
 <mat-toolbar color="primary">
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
@@ -7,7 +8,7 @@
   <a *ngIf="this.authService.isLoggedIn" mat-list-item [routerLink]="'predict'" style="color: white; text-decoration: none;">GoInvest</a>
   <span class="example-spacer"></span>
   <span class="nav-tool-items">
-    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="''" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
+    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
     <a *ngIf="!this.authService.isLoggedIn" mat-button mat-raised-button routerLink="register" routerLinkActive="active" style="text-decoration: none;">Register</a>
     <a *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLink="market" routerLinkActive="active" style="text-decoration: none;">View Market</a>&nbsp; &nbsp; &nbsp;
     <a (click)="logout()" *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLinkActive="active" style="text-decoration: none;">Logout</a>
@@ -36,3 +37,4 @@
       </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+</body>
