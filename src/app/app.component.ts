@@ -1,4 +1,4 @@
-import { Component, Inject, AfterViewInit } from '@angular/core';
+import { Component, Inject, AfterViewInit, HostListener } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd }
@@ -31,6 +31,10 @@ export class AppComponent implements AfterViewInit{
                     this.loading = false;
                 }
             });
+    }
+    @HostListener('window:beforeunload', ['$event'])
+    beforeunloadHandler(event) {
+    this.logout();
     }
   logout() {
     this.authService.doLogout()
