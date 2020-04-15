@@ -10,7 +10,7 @@
   <span class="nav-tool-items">
     <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
     <a *ngIf="!this.authService.isLoggedIn" mat-button mat-raised-button routerLink="register" routerLinkActive="active" style="text-decoration: none;">Register</a>
-    <a *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLink="market" routerLinkActive="active" style="text-decoration: none;">View Market</a>&nbsp; &nbsp; &nbsp;
+    <a *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLink="market" routerLinkActive="active" style="text-decoration: none;">View Market</a>&nbsp;
     <a (click)="logout()" *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLinkActive="active" style="text-decoration: none;">Logout</a>
   </span>
 </mat-toolbar>

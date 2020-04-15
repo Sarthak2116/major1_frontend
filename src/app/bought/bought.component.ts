@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 export class BoughtComponent implements OnInit,PipeTransform {
   arr: string [];
   t = 0;
+  call=true;
   constructor(private httpService: HttpClient, private http: HttpClient) { }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class BoughtComponent implements OnInit,PipeTransform {
         console.log (err.message);
       }
     );
+    this.call=false;
   }
   transform(arr) {
     const copy = arr.slice();
