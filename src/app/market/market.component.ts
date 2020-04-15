@@ -13,7 +13,7 @@ import { BuycomComponent } from '../buycom/buycom.component';
   styleUrls: ['./market.component.css']
 })
 export class MarketComponent implements OnInit {
-
+  call_market=true;
   arr: string [];
   market = 'trending_up';
   // tslint:disable-next-line: ban-types
@@ -33,6 +33,7 @@ export class MarketComponent implements OnInit {
           const s='selected';
           (this.arr[i])[s]='1';
         }
+        this.call_market=false;
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);

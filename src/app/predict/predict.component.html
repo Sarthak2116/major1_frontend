@@ -1,4 +1,4 @@
-<div style="text-align:centre;">
+<div style="text-align:centre;" *ngIf="!this.call">
     <table class="table" *ngIf="arr" >
         <!-- ADD HEADERS -->
         <thead>
@@ -44,4 +44,10 @@
         </tr>
       </tbody>
     </table>
+</div>
+<div *ngIf="this.call">
+  <span class="centered">
+    <h2 style="color: #3f51b5;">Loading...Please wait</h2>
+  <h2 style="margin-left: 35px;"><mat-spinner></mat-spinner></h2>
+</span>
 </div>

@@ -1,4 +1,4 @@
-<table class="centered" style="margin-top: 8%;">
+<table class="centered" style="margin-top: 8%;" *ngIf="!this.call">
     <tr>
         <td colspan="2" style="text-align: center;">
             <!-- <h3 class="creds"> -->
@@ -38,3 +38,9 @@
         </td>
     </tr>
 </table>
+<div *ngIf="this.call">
+    <span class="centered">
+      <h2 style="color: #3f51b5;">Loading...Please wait</h2>
+    <h2 style="margin-left: 35px;"><mat-spinner></mat-spinner></h2>
+  </span>
+  </div>

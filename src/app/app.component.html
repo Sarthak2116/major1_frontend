@@ -1,5 +1,5 @@
 <body>
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" style="overflow: hidden;">
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
   </button>
@@ -32,7 +32,7 @@
         <h2 style="margin-left: 35px;"><mat-spinner></mat-spinner></h2>
       </span>
       </div>
-      <div [hidden]="loading" style="height: 100vh;">
+      <div [hidden]="loading" style="height: 92vh;">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>

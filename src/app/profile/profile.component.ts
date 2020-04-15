@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  call=true;
   lf = 0;
   tf = 50000.00;
   ivf = 0;
@@ -65,6 +66,7 @@ export class ProfileComponent implements OnInit {
         console.log (err.message);
       }
     );
+      this.call=false;
   }
 
 }

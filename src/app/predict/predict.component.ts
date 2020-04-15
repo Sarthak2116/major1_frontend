@@ -16,6 +16,7 @@ import { BuycomComponent } from '../buycom/buycom.component';
 export class PredictComponent implements OnInit {
   arr: string [];
   market = 'trending_up';
+  call=true;
   // tslint:disable-next-line: ban-types
   currentUser: Object = {};
   constructor(public dialog: MatDialog, private httpService: HttpClient, private http: HttpClient, public authService: AuthService,
@@ -32,6 +33,7 @@ export class PredictComponent implements OnInit {
           const s='selected';
           (this.arr[i])[s]='1';
         }
+        this.call=false;
       },
       (err: HttpErrorResponse) => {
         console.log (err.message);
