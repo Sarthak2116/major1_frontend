@@ -27,7 +27,6 @@ export class MarketComponent implements OnInit {
         let i=0;
         // tslint:disable-next-line: no-string-literal
         this.arr = data as string [];	 // FILL THE ARRAY WITH DATA
-        console.log(this.arr);
         for(i=0;i<this.arr.length;i++)
         {
           const s='selected';
@@ -75,7 +74,6 @@ export class MarketComponent implements OnInit {
   {
     // a=parseFloat(a);
     // b=parseFloat(b);
-    console.log(typeof(b));
     const c=parseFloat(((a*b).toFixed(2)));
     return c;
   }

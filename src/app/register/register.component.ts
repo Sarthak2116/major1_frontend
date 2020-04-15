@@ -27,12 +27,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit() { }
 
   registerUser() {
+      if(this.signupForm.value.U_name!=='' && this.signupForm.value.U_name!==null
+      && this.signupForm.value.U_pass!=='' && this.signupForm.value.U_pass!==null 
+      && this.signupForm.value.Email_id!=='' && this.signupForm.value.Email_id!==null)
+      {
       this.authService.signUp(this.signupForm.value).subscribe((res) => {
         this.a=0;
         this.router.navigate(['']);
         });
+      }
+      else{
     this.signupForm.reset();
     this.router.navigate(['register']);
     this.a=1;
+  }
   }
 }

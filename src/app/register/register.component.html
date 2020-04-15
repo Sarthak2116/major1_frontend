@@ -25,8 +25,10 @@
         </mat-card-content>
   
         <button mat-stroked-button color="accent" class="btn-block">Register</button>
-  
       </form>
+      <div *ngIf="this.a==1" style="color: rgb(255, 0, 0); text-align: center;">
+        Unable to process the details. Please try with different Username.
+      </div>
     </mat-card>
   </div>
 </body>

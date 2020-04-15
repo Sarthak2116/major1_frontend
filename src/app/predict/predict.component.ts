@@ -75,7 +75,6 @@ export class PredictComponent implements OnInit {
   {
     // a=parseFloat(a);
     // b=parseFloat(b);
-    console.log(typeof(b));
     const c=parseFloat(((a*b).toFixed(2)));
     return c;
   }

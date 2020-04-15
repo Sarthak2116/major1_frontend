@@ -33,11 +33,20 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
+    if(this.signinForm.value.Username!=='' && this.signinForm.value.Username!==null &&
+    this.signinForm.value.Password!=='' && this.signinForm.value.Password!==null)
+    {
     const t = this.authService.signIn(this.signinForm.value);
       if(!t)
       {
         this.signinForm.reset();
         this.a=1;
       }
+    }
+    else
+    {
+      this.signinForm.reset();
+      this.a=1;
+    }
   }
 }

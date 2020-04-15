@@ -14,8 +14,10 @@
             Password: &nbsp;
                 <mat-form-field>
                     <input matInput [type]="hide ? 'password' : 'text'"  value="{{this.s['u_pass']}}"readonly>
-                </mat-form-field>
-                <button mat-icon-button><mat-icon (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+            </mat-form-field>
         </td>
     </tr>
     <tr>
