@@ -29,6 +29,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
 import { MarketComponent } from './market/market.component';
+import {  MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MarketComponent } from './market/market.component';
     MatProgressBarModule,
     MatToolbarModule,
     MatButtonModule,
+    MatMenuModule,
     MatIconModule,
     MatSidenavModule,
     MatListModule,

@@ -8,10 +8,18 @@
   <a *ngIf="this.authService.isLoggedIn" mat-list-item [routerLink]="'predict'" style="color: white; text-decoration: none;">GoInvest</a>
   <span class="example-spacer"></span>
   <span class="nav-tool-items">
-    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="" routerLinkActive="active" style="color: white; text-decoration: none;">Log in</a>
-    <a *ngIf="!this.authService.isLoggedIn" mat-button mat-raised-button routerLink="register" routerLinkActive="active" style="text-decoration: none;">Register</a>
-    <a *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLink="market" routerLinkActive="active" style="text-decoration: none;">View Market</a>&nbsp;
-    <a (click)="logout()" *ngIf="this.authService.isLoggedIn" mat-button mat-raised-button routerLinkActive="active" style="text-decoration: none;">Logout</a>
+    <button  mat-button *ngIf="this.authService.isLoggedIn" routerLink="market">
+      <mat-icon>insert_chart</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>fingerprint</mat-icon>
+    </button>
+    <mat-menu #appMenu="matMenu">
+      <button *ngIf="this.authService.isLoggedIn" mat-menu-item routerLink="profile"><mat-icon>perm_identity</mat-icon> My Profile</button>
+      <button *ngIf="this.authService.isLoggedIn" mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon> Logout</button>
+      <button  *ngIf="!this.authService.isLoggedIn" mat-menu-item routerLink="login"><mat-icon>input</mat-icon> Login</button>
+      <button  *ngIf="!this.authService.isLoggedIn" mat-menu-item routerLink="register"><mat-icon>person</mat-icon>Register</button>
+    </mat-menu>
   </span>
 </mat-toolbar>
 <mat-sidenav-container>
