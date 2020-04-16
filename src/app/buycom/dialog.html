@@ -7,9 +7,13 @@
     </p>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-raised-button color="primary" routerLink="bought" 
-    style="width: 80%; margin: 10px;" (click)='onNoClick()'>
-      View Stocks
+    <button mat-stroked-button color="primary" 
+    style="width: 40%; margin: 5px;" (click)='onNoClick()'>
+      Cancel
+    </button>
+    <button mat-raised-button color="accent" routerLink="bought" 
+    style="width: 40%; margin: 5px;" (click)='onNoClick()'>
+      Confirm
     </button>
   </mat-dialog-actions>
 </div>
