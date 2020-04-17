@@ -17,7 +17,7 @@
     <mat-menu #appMenu="matMenu">
       <button *ngIf="this.authService.isLoggedIn" mat-menu-item routerLink="profile"><mat-icon>perm_identity</mat-icon> My Profile</button>
       <button *ngIf="this.authService.isLoggedIn" mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon> Logout</button>
-      <button  *ngIf="!this.authService.isLoggedIn" mat-menu-item routerLink="login"><mat-icon>input</mat-icon> Login</button>
+      <button  *ngIf="!this.authService.isLoggedIn" mat-menu-item routerLink=""><mat-icon>input</mat-icon> Login</button>
       <button  *ngIf="!this.authService.isLoggedIn" mat-menu-item routerLink="register"><mat-icon>person</mat-icon>Register</button>
     </mat-menu>
   </span>
