@@ -8,10 +8,10 @@
   <a *ngIf="this.authService.isLoggedIn" mat-list-item [routerLink]="'predict'" style="color: white; text-decoration: none;">GoInvest</a>
   <span class="example-spacer"></span>
   <span class="nav-tool-items">
-    <button  mat-button *ngIf="this.authService.isLoggedIn" routerLink="market">
+    <button  mat-mini-fab color="primary" *ngIf="this.authService.isLoggedIn" routerLink="market">
       <mat-icon>insert_chart</mat-icon>
-    </button>
-    <button mat-button [matMenuTriggerFor]="appMenu">
+    </button>&nbsp;&nbsp;
+    <button mat-mini-fab color="primary" [matMenuTriggerFor]="appMenu">
       <mat-icon>fingerprint</mat-icon>
     </button>
     <mat-menu #appMenu="matMenu">
@@ -27,10 +27,10 @@
   </mat-sidenav-content>
     <mat-sidenav #sidenav>
       <mat-nav-list style="width: 250px;">
-        <a mat-list-item [routerLink]="'market'"> Current Market </a>
-        <a mat-list-item [routerLink]="'predict'"> GoInvest's Predictions </a>
-        <a mat-list-item [routerLink]="'bought'"> Payment History </a>
-        <a mat-list-item [routerLink]="'profile'"> My Profile </a>
+        <a mat-list-item [routerLink]="'market'"><mat-icon>insert_chart</mat-icon>&nbsp;&nbsp; Current Market </a>
+        <a mat-list-item [routerLink]="'predict'"><mat-icon>graphic_eq</mat-icon>&nbsp;&nbsp; GoInvest's Predictions </a>
+        <a mat-list-item [routerLink]="'bought'"><mat-icon>monetization_on</mat-icon>&nbsp;&nbsp; Payment History </a>
+        <a mat-list-item [routerLink]="'profile'"><mat-icon>perm_identity</mat-icon>&nbsp;&nbsp; My Profile </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
