@@ -13,6 +13,7 @@ import { BuycomComponent } from '../buycom/buycom.component';
   styleUrls: ['./market.component.css']
 })
 export class MarketComponent implements OnInit {
+  // tslint:disable-next-line: variable-name
   call_market=true;
   arr: string [];
   market = 'trending_up';
