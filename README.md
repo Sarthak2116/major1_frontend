@@ -1,6 +1,6 @@
-Angular Frontend for GoInvest App
+# Angular Frontend for GoInvest App
 
-To start thr frontend:
+To start the frontend:
 ```
 ng serve -o
 ```
