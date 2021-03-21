@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from './../shared/auth.service';
-import { Router } from '@angular/router';
+// import 'rxjs/rx';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-register',
@@ -10,36 +10,55 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit {
-  signupForm: FormGroup;
+
+  url = 'wss://fstream.binance.com/ws/btcusdt@kline_1m'
+  ws = new WebSocket(this.url);
   a=0;
-  constructor(
-    public fb: FormBuilder,
-    public authService: AuthService,
-    public router: Router
-  ) {
-    this.signupForm = this.fb.group({
-      U_name: [''],
-      Email_id: [''],
-      U_pass: ['']
-    })
-  }
+  market:any;
 
-  ngOnInit() { }
-
-  registerUser() {
-      if(this.signupForm.value.U_name!=='' && this.signupForm.value.U_name!==null
-      && this.signupForm.value.U_pass!=='' && this.signupForm.value.U_pass!==null 
-      && this.signupForm.value.Email_id!=='' && this.signupForm.value.Email_id!==null)
-      {
-      this.authService.signUp(this.signupForm.value).subscribe((res) => {
-        this.a=0;
-        this.router.navigate(['']);
-        });
-      }
-      else{
-    this.signupForm.reset();
-    this.router.navigate(['register']);
-    this.a=1;
+  constructor() {
   }
+  createObservableSocket(url:string){
+    // this.ws.onmessage = function(event, )
+    this.ws = new WebSocket(url);
+    return new Observable(observer => {
+        this.ws.onmessage = (e) => {
+            // console.log(e.data);
+            try {
+                var object = JSON.parse(e.data);
+                observer.next(object);
+            } catch (e) {
+                 console.log("Cannot parse data : " + e);
+            }
+        }
+        // this.ws.onerror = (event) => observer.error(event);
+        // this.ws.onclose = (event) => observer.complete();
+    }
+    );
+}
+  public generateDayWiseTimeSeries(baseval, count, yrange) {
+    var i = 0;
+    var series = [];
+    while (i < count) {
+      var y =
+        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+      series.push([baseval, y]);
+      baseval += 86400000;
+      i++;
+    }
+    return series;
+  }
+  addDatatoChart(){}
+  ngOnInit() {
+
+    // this.ws.onmessage = function (event){
+    //   console.log(event.data);
+    // }
+    
+    // this.createObservableSocket(this.url).subscribe((res:any) => {
+    //   console.log(res.k);
+    //   this.market = res.k;
+    //   });
   }
 }

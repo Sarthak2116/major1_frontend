@@ -7,12 +7,23 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
 import { AuthGuard } from './shared/auth.guard';
 import { MarketComponent } from './market/market.component';
+import {HomeComponent} from './home/home.component'
+import { MarketviewComponent } from './marketview/marketview.component';
+import { TradingComponent } from './trading/trading.component';
+import { KycComponent } from './kyc/kyc.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 const routes: Routes = [
   {
     path: 'bought',
     component: BoughtComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    // canActivate: [AuthGuard]
   },
   {
     path: 'profile',
@@ -21,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LoginComponent,
+    component: HomeComponent,
   },
   {
     path: 'predict',
@@ -35,10 +46,30 @@ const routes: Routes = [
   {
     path: 'market',
     component: MarketComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'trading',
+    component: TradingComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'marketview',
+    component: MarketviewComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'kyc',
+    component: KycComponent,
+    // canActivate: [AuthGuard]
   },
   { path: '**',
-  component: LoginComponent
+  component: HomeComponent
   }
 ];
 

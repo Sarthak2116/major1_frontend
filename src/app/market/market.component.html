@@ -1,34 +1,39 @@
-<div style="text-align:centre;" *ngIf="!this.call_market">
-    <table class="table" *ngIf="arr" >
-        <thead>
-        <tr>
-            <th>Stock Name</th>
-            <th>Opening Price</th>
-            <th>Closing Price</th>
-            <th>High</th>
-            <th>Low</th>
-            <th>Bid</th>
-            <th>Ask</th>
-            <th>Volume</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let pred of arr; trackBy: trackById;">
-            <td>{{pred.stk_name}}</td>
-            <td>${{pred.open_price.toFixed(2)}}</td>
-            <td>${{pred.close_price.toFixed(2)}}</td>
-            <td style="color: green;">${{pred.high.toFixed(2)}}</td>
-            <td style="color: red;">${{pred.low.toFixed(2)}}</td>
-            <td>{{pred.bid}}</td>
-            <td>{{pred.ask}}</td>
-            <td>{{pred.volume}}</td>
-        </tr>
-      </tbody>
-    </table>
+<div style="text-align:centre;" *ngIf="!this.call"> 
+  <!-- <mat-grid-list cols="3" rowHeight="2:1" style="text-align: center;">
+    <mat-grid-tile *ngFor="let news of arr;">
+      <h2>
+        {{news.title}}<br>
+        <div style="text-align:center">
+          <a href={{news.url}} target="_blank">
+            <button mat-raised-button style="background-color: #981B40; color: white;">
+              Learn More
+            </button>
+          </a>
+        </div>
+      </h2>
+    </mat-grid-tile>
+    <br>
+
+  </mat-grid-list> -->
+  <br><br>
+  <mat-card *ngFor="let news of arr;">
+    <div>{{callfunc()}}
+    <img src={{news_photos[ran_no]}} alt="">
+    <a style="text-decoration: none;" href={{news.url}}>
+      <h2>{{news.title}}<br></h2>
+    </a>
+    <p>
+      Published At: {{news.created_at}}<br>
+      Upvotes: {{news.votes.liked}} &thinsp;
+      Downvotes: {{news.votes.disliked}}
+    </p>
+    </div>
+  </mat-card>
 </div>
-<div *ngIf="this.call_market">
+
+<div *ngIf="this.call" style="min-height: 100%;">
   <span class="centered">
-    <h2 style="color: #3f51b5;">Market is being updated... </h2>
-  <h2 style="margin-left: 50px;"><mat-spinner></mat-spinner></h2>
+    <h2 style="color: #981B40;">News are being updated... </h2>
+    <h2 style="margin-left: 75px;"><mat-spinner color="#981B40;" style="color: #981B40;"></mat-spinner></h2>
 </span>
 </div>

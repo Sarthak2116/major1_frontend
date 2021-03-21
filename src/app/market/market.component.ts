@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { BuycomComponent } from '../buycom/buycom.component';
 
+
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
@@ -15,7 +16,10 @@ import { BuycomComponent } from '../buycom/buycom.component';
 export class MarketComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   call_market=true;
-  arr: string [];
+  arr: any;
+  news_photos: any
+  ran_no: any;
+  call=true;
   market = 'trending_up';
   // tslint:disable-next-line: ban-types
   currentUser: Object = {};
@@ -23,6 +27,24 @@ export class MarketComponent implements OnInit {
     private actRoute: ActivatedRoute) {
      }
   ngOnInit(): void {
+    this.news_photos = ["../../assets/news1.jpeg","../../assets/news2.jpeg","../../assets/news3.jpeg","../../assets/news4.jpeg"]
+    this.httpService.get('https://cryptopanic.com/api/v1/posts/?auth_token=c8d4761395f9acb30e5f790828ac162d59416f89&kind=news').subscribe(
+      data => {
+        let i=0;
+        // tslint:disable-next-line: no-string-literal
+        this.arr = data;	 // FILL THE ARRAY WITH DATA
+        this.arr = this.arr.results;
+        console.log(this.arr);
+        this.call = false;
+        //console.log(this.arr.results[0].title);
+      },
+      (err: HttpErrorResponse) => {
+        console.log (err.message);
+      }
+    );
+
+
+
     this.httpService.get(environment.Route+'/stocks/market').subscribe(
       data => {
         let i=0;
@@ -54,6 +76,10 @@ export class MarketComponent implements OnInit {
     })
     .subscribe(data => {});
   }
+  callfunc()
+  {
+    this.ran_no = Math.floor((Math.random() * 4) + 0);
+  }
   openDialog(pred,s): void {
     // tslint:disable-next-line: no-use-before-declare
     this.getData(pred,s);
@@ -64,7 +90,7 @@ export class MarketComponent implements OnInit {
   }
   check(a,b): boolean{
     a=parseFloat(a);
-    b=parseFloat(b)
+    b=parseFloat(b);
     if(a>b)
     {
       return false;

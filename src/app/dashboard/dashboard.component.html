@@ -1,0 +1,35 @@
+<div style="height: 100%; padding-left: 10%; padding-top: 7%;">
+    <h1 style="color: black;"><b>Dashboard</b></h1>
+    <table class="centered" style="margin-top: 5%;">
+        <tr>
+            <td>
+                <circle-progress
+                    [percent]= "0"
+                    [radius]="250"
+                    [outerStrokeWidth]="12"
+                    [innerStrokeWidth]="8"
+                    [outerStrokeColor]="this.color"
+                    [innerStrokeColor]="'#EBE5FE'"
+                    [animation]="true"
+                    [animationDuration]="300">
+                </circle-progress>
+            </td>
+            <td style="margin-left: 10%; width: 15%;">
+                <!-- <h2 style="color: #3f51b5;">Total Funds: ${{this.tf}}</h2>
+                <h2 style="color: darkred;">Invested Funds: ${{this.ivf.toFixed(2)}} </h2>
+                <h2 style="color: mediumseagreen;">Funds Left: ${{this.lf.toFixed(2)}} </h2> -->
+            </td>
+            <td colspan="2" style="text-align: center; margin: 20px;">
+                <div style="text-align:center">
+                    <button mat-stroked-button style="background-color: #981B40; color: white; font-size: larger;" class="btn-block">Connect to Binance</button>
+                </div>
+                <div style="text-align:center; margin: 20px;">
+                    <button mat-stroked-button style="background-color: white; color: #981B40; font-size: larger;" class="btn-block"><b>Register as Master Trader</b></button>
+                </div>
+                <div style="text-align:center; margin: 20px;">
+                    <button mat-stroked-button style="background-color: #981B40; color: white; font-size: larger;" class="btn-block">Register as Copy trader</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

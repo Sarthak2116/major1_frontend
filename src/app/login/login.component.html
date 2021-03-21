@@ -1,29 +1,66 @@
 <body class="abc" *ngIf="!this.authService.isLoggedIn">
     
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-tab-group>
+      <mat-tab label="Login">
+        <br><br>
+          <form class="example-form" [formGroup]="signinForm" (ngSubmit)="loginUser()">
+            <mat-card-content>
+              <div class="example-full-width">
+                <input id="ip2" type="text"  formControlName="Username" placeholder="Enter Username" required>
+              </div>
+              <br>
+              <div class="example-full-width">
+                <input id="ip2" type="password" formControlName="Password" placeholder="Password" required>
+              </div>
+            </mat-card-content><br>
+            <div style="text-align:center">
+              <button [routerLink]="'/dashboard'" mat-stroked-button style="background-color: #981B40; color: white;" class="btn-block">Log in</button>
+            </div>
+            <div *ngIf="this.a==1" style="color: rgb(255, 0, 0); text-align: center;">
+              Unable to verify your crendentials. Please check.
+            </div>
+          </form>
+      </mat-tab>
+      <mat-tab label="Sign Up">   
+        <br><br>  
+          <form class="example-form" [formGroup]="signupForm" (ngSubmit)="registerUser()">
+      
+            <mat-card-content>
+              <div class="example-full-width">
+                <input id="ip2" type="text" formControlName="U_name" placeholder="Username" required>
+              </div><br>
+      
+              <div class="example-full-width">
+                <input id="ip2" type="email" formControlName="Email_id" placeholder="Email" required>
+              </div><br>
+      
+              <div class="example-full-width">
+                <input id="ip2" type="password" formControlName="U_pass" placeholder="Password" required>
+              </div><br>
+    
+              <div class="example-full-width">
+                <input id="ip2" type="password" formControlName="U_c_pass" placeholder="Confirm Password" required>
+              </div><br>
+      
+            </mat-card-content>
+            <div style="text-align:center">
+              <button mat-stroked-button [routerLink]="'/dashboard'" style="background-color: #981B40; color: white;" class="btn-block">Sign Up!</button>
+            </div>
+          </form>
+          <div *ngIf="this.a==1" style="color: rgb(255, 0, 0); text-align: center;">
+            Unable to process the details. Please try with different Username.
+          </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>
 
-    <mat-card class="box">
-      <mat-card-header>
-        <img src="../../assets/logo.png" alt="">
-        <mat-card-title>Log in</mat-card-title>
-      </mat-card-header>
-  
-      <form class="example-form" [formGroup]="signinForm" (ngSubmit)="loginUser()">
-        <mat-card-content>
-          <mat-form-field class="example-full-width">
-            <input matInput type="text"  formControlName="Username" placeholder="Enter Username" required>
-          </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <input matInput type="password" formControlName="Password" placeholder="Password" required>
-          </mat-form-field>
-        </mat-card-content>
-        <button mat-stroked-button color="accent" class="btn-block">Log in</button>
-        <div *ngIf="this.a==1" style="color: rgb(255, 0, 0); text-align: center;">
-          Unable to verify your crendentials. Please check.
-        </div>
-      </form>
-    </mat-card>
-  
-  </div>
 </body>
+
+
+<!-- <mat-tab-group>
+  <mat-tab label="First"> Content 1 </mat-tab>
+  <mat-tab label="Second"> Content 2 </mat-tab>
+</mat-tab-group> -->

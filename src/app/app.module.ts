@@ -30,6 +30,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
 import { MarketComponent } from './market/market.component';
 import {  MatMenuModule } from '@angular/material/menu';
+import { HomeComponent } from './home/home.component';
+import { MarketviewComponent } from './marketview/marketview.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { TradingComponent } from './trading/trading.component';
+import { KycComponent } from './kyc/kyc.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,12 @@ import {  MatMenuModule } from '@angular/material/menu';
     PredictComponent,
     RegisterComponent,
     BuycomComponent,
-    MarketComponent
+    MarketComponent,
+    HomeComponent,
+    MarketviewComponent,
+    TradingComponent,
+    KycComponent,
+    DashboardComponent
   ],
   entryComponents: [
     BuycomComponent
@@ -49,6 +60,7 @@ import {  MatMenuModule } from '@angular/material/menu';
     NgbModule,
     ChartsModule,
     WavesModule,
+    NgApexchartsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatInputModule,

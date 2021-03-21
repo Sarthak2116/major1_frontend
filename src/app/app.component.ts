@@ -3,6 +3,7 @@ import { AuthService } from './shared/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd }
 from '@angular/router';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,9 @@ export class AppComponent implements AfterViewInit{
   title = 'GoInvest';
   indeterminate='indeterminate';
   loading;
-  constructor(private httpService: HttpClient, private http: HttpClient, public authService: AuthService, private router: Router) {
+  constructor(private titleService:Title, private httpService: HttpClient, private http: HttpClient, public authService: AuthService, private router: Router) {
     this.loading = true;
+    this.titleService.setTitle("Kazkade");
   }
   arr: string [];
   // tslint:disable-next-line: use-lifecycle-interface

@@ -1,48 +1,38 @@
-<body>
-<mat-toolbar color="primary" style="overflow: hidden;">
-  <button mat-icon-button>
-    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-  </button>
-  &nbsp;&nbsp;
-  <a *ngIf="!this.authService.isLoggedIn" mat-list-item [routerLink]="''" style="color: white; text-decoration: none;">GoInvest</a>
-  <a *ngIf="this.authService.isLoggedIn" mat-list-item [routerLink]="'predict'" style="color: white; text-decoration: none;">GoInvest</a>
-  <span class="example-spacer"></span>
-  <span class="nav-tool-items">
-    <button  mat-mini-fab color="primary" *ngIf="this.authService.isLoggedIn" routerLink="market">
-      <mat-icon>insert_chart</mat-icon>
-    </button>&nbsp;&nbsp;
-    <button mat-mini-fab color="primary" [matMenuTriggerFor]="appMenu">
-      <mat-icon>fingerprint</mat-icon>
-    </button>
-    <mat-menu #appMenu="matMenu">
-      <button *ngIf="this.authService.isLoggedIn" mat-menu-item routerLink="profile"><mat-icon>perm_identity</mat-icon> My Profile</button>
-      <button *ngIf="this.authService.isLoggedIn" mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon> Logout</button>
-      <button  *ngIf="!this.authService.isLoggedIn" mat-menu-item routerLink=""><mat-icon>input</mat-icon> Login</button>
-      <button  *ngIf="!this.authService.isLoggedIn" mat-menu-item routerLink="register"><mat-icon>person</mat-icon>Register</button>
-    </mat-menu>
-  </span>
-</mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav-content>     
-  </mat-sidenav-content>
-    <mat-sidenav #sidenav>
-      <mat-nav-list style="width: 250px;">
-        <a mat-list-item [routerLink]="'market'"><mat-icon>insert_chart</mat-icon>&nbsp;&nbsp; Current Market </a>
-        <a mat-list-item [routerLink]="'predict'"><mat-icon>graphic_eq</mat-icon>&nbsp;&nbsp; GoInvest's Predictions </a>
-        <a mat-list-item [routerLink]="'bought'"><mat-icon>monetization_on</mat-icon>&nbsp;&nbsp; Payment History </a>
-        <a mat-list-item [routerLink]="'profile'"><mat-icon>perm_identity</mat-icon>&nbsp;&nbsp; My Profile </a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div [hidden]="!loading" style='height:100vh;'>
-        <span class="centered">
-          <h2 style="color: #3f51b5;">Market is being updated... </h2>
-        <h2 style="margin-left: 50px;"><mat-spinner></mat-spinner></h2>
-      </span>
+
+  <!-- Links (sit on top) -->
+  <div class="w3-top">
+    <div class="w3-row w3-large" style="background-color: white; padding: 1%;">
+      <div class="w3-col s3">
+        <!-- <a href="#" class="w3-button w3-block">Home</a> -->
+        <a mat-list-item [routerLink]="''" style="color: #981B40; text-decoration: none;">
+          <img src="../assets/Kazcade.png" alt="" style="height: 80%; width: 50%;">
+        </a>
       </div>
-      <div [hidden]="loading" style="height: 92vh;">
-        <router-outlet></router-outlet>
+      <div class="w3-col s2">
+        <a href="#plans" class="w3-button w3-block" [routerLink]="'trading'">Markets</a>
       </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
-</body>
+      <div class="w3-col s2">
+        <a href="#about" class="w3-button w3-block" [routerLink]="'home'">About</a>
+      </div>
+      <div class="w3-col s2">
+        <a href="#about" class="w3-button w3-block" [routerLink]="'market'">News</a>
+      </div>
+      <div class="w3-col s3" style="text-align:center;">
+        <button mat-stroked-button  [routerLink]="'login'" style="background-color: #981B40; color: white;" class="btn-block">Sign In</button>
+      </div>
+    </div>
+    </div>
+    <router-outlet></router-outlet>
+    <footer class="w3-container w3-padding-32 w3-light-grey w3-center" style="position: relative;">
+      <h4>Footer</h4>
+      <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+      <div class="w3-xlarge w3-section">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+      </div>
+      <p>Copyright 2021 Kazcade</p>
+    </footer>

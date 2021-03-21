@@ -32,6 +32,7 @@ export class AuthService {
 
   // Sign-in
   signIn(user: User): boolean {
+    console.log(user);
     // tslint:disable-next-line: prefer-const
     this.http.post<any>(`${this.endpoint}`, user)
       .subscribe((res: any) => {
