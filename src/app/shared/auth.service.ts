@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 
 export class AuthService {
   t=true;
-  endpoint = environment.Route+'/login';
+  endpoint = environment.Route+'/api/user';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   constructor(
@@ -23,7 +23,9 @@ export class AuthService {
 
   // Sign-up
   signUp(user: User): Observable<any> {
-    const api = `${this.endpoint}/signup`;
+    const api = `${this.endpoint}/register`;
+    user.sso_enabled = "true";
+    user.newsletter = "true";
     return this.http.post(api, user)
       .pipe(
         catchError(this.handleError)
@@ -32,12 +34,13 @@ export class AuthService {
 
   // Sign-in
   signIn(user: User): boolean {
+    this.endpoint = this.endpoint+'/login'
     console.log(user);
     // tslint:disable-next-line: prefer-const
     this.http.post<any>(`${this.endpoint}`, user)
       .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.token)
-        this.router.navigate(['/predict']);
+        localStorage.setItem('access_token', res.access_token)
+        this.router.navigate(['/dashboard']);
       },
       (err: HttpErrorResponse) => {
         this.t=false;

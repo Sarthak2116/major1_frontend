@@ -17,7 +17,18 @@
       <div class="w3-col s2">
         <a href="#about" class="w3-button w3-block" [routerLink]="'market'">News</a>
       </div>
-      <div class="w3-col s3" style="text-align:center;">
+      <div *ngIf="this.authService.isLoggedIn" class="w3-col s3" style="text-align:center;">
+        <p class="w3-block"> Hi, User! 
+          <button mat-mini-fab color="primary" [matMenuTriggerFor]="appMenu">
+            <mat-icon>fingerprint</mat-icon>
+          </button>
+          <mat-menu #appMenu="matMenu">
+            <button *ngIf="this.authService.isLoggedIn" mat-menu-item routerLink="dashboard"><mat-icon>perm_identity</mat-icon> My Profile</button>
+            <button *ngIf="this.authService.isLoggedIn" mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon> Logout</button>
+          </mat-menu>
+        </p>
+      </div>
+      <div *ngIf="!this.authService.isLoggedIn" class="w3-col s3" style="text-align:center;">
         <button mat-stroked-button  [routerLink]="'login'" style="background-color: #981B40; color: white;" class="btn-block">Sign In</button>
       </div>
     </div>

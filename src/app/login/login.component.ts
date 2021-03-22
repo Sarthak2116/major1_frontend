@@ -21,13 +21,14 @@ export class LoginComponent implements OnInit {
     public router: Router
   ) {
     this.signinForm = this.fb.group({
-      Username: [''],
-      Password: ['']
+      mno: [''],
+      password: ['']
     });
     this.signupForm = this.fb.group({
-      U_name: [''],
-      Email_id: [''],
-      U_pass: [''],
+      full_name: [''],
+      mno: [''],
+      email: [''],
+      password: [''],
       U_c_pass: ['']
     })
   }
@@ -35,13 +36,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if(this.authService.getToken()!=null)
     {
-      this.router.navigate(['/predict']);
+      this.router.navigate(['/dashboard']);
     }
   }
 
   loginUser() {
-    if(this.signinForm.value.Username!=='' && this.signinForm.value.Username!==null &&
-    this.signinForm.value.Password!=='' && this.signinForm.value.Password!==null)
+    console.log(this.signinForm.value)
+    if(this.signinForm.value.mno!=='' && this.signinForm.value.mno!==null &&
+    this.signinForm.value.password!=='' && this.signinForm.value.password!==null)
     {
     const t = this.authService.signIn(this.signinForm.value);
       if(!t)
@@ -57,18 +59,20 @@ export class LoginComponent implements OnInit {
     }
   }
   registerUser() {
-    if(this.signupForm.value.U_name!=='' && this.signupForm.value.U_name!==null
-    && this.signupForm.value.U_pass!=='' && this.signupForm.value.U_pass!==null 
+    if(this.signupForm.value.email!=='' && this.signupForm.value.email!==null
+    && this.signupForm.value.password!=='' && this.signupForm.value.password!==null 
+    // && this.signupForm.value.password!=this.signupForm.value.password
     && this.signupForm.value.Email_id!=='' && this.signupForm.value.Email_id!==null)
     {
     this.authService.signUp(this.signupForm.value).subscribe((res) => {
+      console.log(res);
       this.a=0;
-      this.router.navigate(['']);
+      this.router.navigate(['\login']);
       });
     }
     else{
   this.signupForm.reset();
-  this.router.navigate(['register']);
+  // this.router.navigate(['register']);
   this.a=1;
 }
 }

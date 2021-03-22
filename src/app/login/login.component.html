@@ -8,15 +8,15 @@
           <form class="example-form" [formGroup]="signinForm" (ngSubmit)="loginUser()">
             <mat-card-content>
               <div class="example-full-width">
-                <input id="ip2" type="text"  formControlName="Username" placeholder="Enter Username" required>
+                <input id="ip2" type="text"  formControlName="mno" placeholder="Enter Mobile Number" required>
               </div>
               <br>
               <div class="example-full-width">
-                <input id="ip2" type="password" formControlName="Password" placeholder="Password" required>
+                <input id="ip2" type="password" formControlName="password" placeholder="Password" required>
               </div>
             </mat-card-content><br>
             <div style="text-align:center">
-              <button [routerLink]="'/dashboard'" mat-stroked-button style="background-color: #981B40; color: white;" class="btn-block">Log in</button>
+              <button mat-stroked-button style="background-color: #981B40; color: white;" class="btn-block">Log in</button>
             </div>
             <div *ngIf="this.a==1" style="color: rgb(255, 0, 0); text-align: center;">
               Unable to verify your crendentials. Please check.
@@ -29,15 +29,19 @@
       
             <mat-card-content>
               <div class="example-full-width">
-                <input id="ip2" type="text" formControlName="U_name" placeholder="Username" required>
+                <input id="ip2" type="text" formControlName="full_name" placeholder="Username" required>
+              </div><br>
+
+              <div class="example-full-width">
+                <input id="ip2" type="text" formControlName="mno" placeholder="Mobile NUmber" required>
               </div><br>
       
               <div class="example-full-width">
-                <input id="ip2" type="email" formControlName="Email_id" placeholder="Email" required>
+                <input id="ip2" type="email" formControlName="email" placeholder="Email" required>
               </div><br>
       
               <div class="example-full-width">
-                <input id="ip2" type="password" formControlName="U_pass" placeholder="Password" required>
+                <input id="ip2" type="password" formControlName="password" placeholder="Password" required>
               </div><br>
     
               <div class="example-full-width">
@@ -46,7 +50,7 @@
       
             </mat-card-content>
             <div style="text-align:center">
-              <button mat-stroked-button [routerLink]="'/dashboard'" style="background-color: #981B40; color: white;" class="btn-block">Sign Up!</button>
+              <button mat-stroked-button style="background-color: #981B40; color: white;" class="btn-block">Sign Up!</button>
             </div>
           </form>
           <div *ngIf="this.a==1" style="color: rgb(255, 0, 0); text-align: center;">
