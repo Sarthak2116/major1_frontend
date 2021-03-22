@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     && this.signupForm.value.Email_id!=='' && this.signupForm.value.Email_id!==null)
     {
     this.authService.signUp(this.signupForm.value).subscribe((res) => {
-      console.log(res);
+      this.signupForm.reset();
       this.a=0;
       this.router.navigate(['\login']);
       });
