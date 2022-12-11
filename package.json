@@ -28,7 +28,7 @@
     "@syncfusion/ej2-ng-charts": "^16.2.50",
     "angular-bootstrap-md": "^9.0.1",
     "apexcharts": "^3.26.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "igniteui-angular-charts": "^11.1.1",
     "igniteui-angular-core": "^11.1.1",
     "jqwidgets-ng": "^9.0.0",
